@@ -1,0 +1,19 @@
+{
+  "name": "icu4c-data-builder",
+  "version": "0.0.1",
+  "description": "ICU4C data generator",
+  "scripts": {
+    "gen": "node index.js"
+  },
+  "keywords": [
+    "icu4c"
+  ],
+  "author": "The ICU Team; © 1997-2015 IBM Corporation and Others, All Rights Reserved",
+  "license": "MIT",
+  "main": "index.js",
+  "dependencies": {
+    "minimist": "^1.1.1",
+    "npm": "^2.7.4"
+  },
+  "private": true
+}

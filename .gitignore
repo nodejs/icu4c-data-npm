@@ -1,0 +1,4 @@
+node_modules
+*.dat
+dist/package.json
+dist/icu-config.json

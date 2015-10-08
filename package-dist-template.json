@@ -1,0 +1,18 @@
+{
+    "name": "icu4c-data",
+    "description": "ICU4C data",
+    "homepage": "https://ssl.icu-project.org",
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1"
+    },
+    "keywords": [
+        "icu4c"
+    ],
+    "author": {
+        "name": "The ICU Team; \u00a9 1997-2015 IBM Corporation and Others, All Rights Reserved"
+    },
+    "license": "MIT\/X",
+    "bugs": {
+        "url": "https://ssl.icu-project.org/trac"
+    }
+}
