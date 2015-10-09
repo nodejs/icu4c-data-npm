@@ -6,8 +6,6 @@ if(!process || !process.versions || !process.versions.node) {
 
 var nodever = process.versions.node;
 
-console.log('Figuring out how to get full-icu data for Node ' + nodever);
-
 var nodesplit = nodever.split('.');
 
 if((nodesplit[0] == 0) && (nodesplit[1] < 12)) {
@@ -65,7 +63,21 @@ if( (icuend.length != 1) || ("lbe".indexOf(icuend) == -1)) {
     throw Error('Don’t know what to make of endianness “'+icuend+'” - expected l, b, or e');
 }
 
-console.log('.. found ICU version ' + icuver + " and expected package icu4c-data@" + icumaj+icuend);
+var icupkg = "icu4c-data@" + icumaj+icuend;
+
+console.log('npm install ' + icupkg + ' (Node ' + nodever + ' and small-icu ' + icuver + ')');
 
 
+var npm = require('npm');
+
+npm.load({}, function(err) {
+	if(err) throw err;
+	npm.commands.install([ icupkg ], function(err, data) {
+		if(err) {
+			throw err;
+		}
+		console.dir(data);
+	});
+	//npm.registry.log.on("log", console.log);
+})
 

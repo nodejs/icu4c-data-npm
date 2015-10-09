@@ -10,5 +10,8 @@
   ],
   "author": "The ICU Team; © 1997-2015 IBM Corporation and Others, All Rights Reserved",
   "license": "MIT",
-  "private": true
+  "private": true,
+  "dependencies": {
+    "npm": ">=2.x"
+  }
 }
