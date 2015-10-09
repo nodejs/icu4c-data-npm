@@ -48,4 +48,24 @@ if(!icuver) {
 	throw Error('Cannot determine Node’s ICU version!');
 }
 
-console.log('.. found ICU version ' + icuver );
+// get 'major' number
+var icumaj = icuver.split('.')[0];
+
+// This is kind of a sanity check that the ICU version is correct.
+// ICU 54 was what Node v0.12 started with.
+if( icumaj < 54 ) {
+    throw Error('Don’t know how to work with ICU version ' + icumaj + ', sorry.');
+}
+
+if(process.config.variables.icu_endianness) {
+    icuend = process.config.variables.icu_endianness.toLowerCase();
+}
+
+if( (icuend.length != 1) || ("lbe".indexOf(icuend) == -1)) {
+    throw Error('Don’t know what to make of endianness “'+icuend+'” - expected l, b, or e');
+}
+
+console.log('.. found ICU version ' + icuver + " and expected package icu4c-data@" + icumaj+icuend);
+
+
+
