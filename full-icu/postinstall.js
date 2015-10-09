@@ -1,4 +1,7 @@
 //var process = require('process');
+var npm = require('npm');
+var fs = require('fs');
+var path = require('path');
 
 if(!process || !process.versions || !process.versions.node) {
 	throw Error('Sorry- don’t know what version of Node you are on.');
@@ -65,19 +68,61 @@ if( (icuend.length != 1) || ("lbe".indexOf(icuend) == -1)) {
 
 var icupkg = "icu4c-data@" + icumaj+icuend;
 
-console.log('npm install ' + icupkg + ' (Node ' + nodever + ' and small-icu ' + icuver + ')');
+var icudat = "icudt"+icumaj+icuend+".dat";
 
+var cwd = fs.realpathSync('.');
+var relpath = path.join('node_modules',"full-icu");
 
-var npm = require('npm');
-
-npm.load({}, function(err) {
-	if(err) throw err;
-	npm.commands.install([ icupkg ], function(err, data) {
-		if(err) {
-			throw err;
+function advice() {
+	if(false /* nodever >= ### */) {
+		console.log('(In the mysterious future) You’re all set! Node will automatically pick this up.');
+	} else {
+		console.log('Node will use this ICU datafile if the environment variable NODE_ICU_DATA is set to “'+relpath+'”');
+		console.log('or with node --icu-data-dir='+relpath+'' );
+		{
+			var asJson = {scripts: { start: "node --icu-data-dir="+relpath }};
+			console.log(" For package.json:");
+			console.log(JSON.stringify(asJson));
 		}
-		console.dir(data);
-	});
-	//npm.registry.log.on("log", console.log);
-})
+	}
+}
 
+if(fs.existsSync(icudat)) {
+	console.log('√ ' + icudat + ' Already there ( for Node ' + nodever + ' and small-icu ' + icuver + ')');
+	advice();
+} else {
+	console.log('npm install ' + icupkg + ' (Node ' + nodever + ' and small-icu ' + icuver + ') -> ' + icudat);
+	
+	
+	npm.load({}, function(err) {
+		if(err) throw err;
+		npm.commands.install([ icupkg ], function(err, data) {
+			if(err) {
+				console.log('Your ICU version may not be available in NPM yet..');
+				throw err;
+			}
+			
+	//		console.log("Installed " + data.length + " thing(s).");
+			data.forEach(function(i) {
+				var datPath = path.join(i[1],icudat);
+				if(!fs.existsSync(datPath)) {
+					console.log(' • ' + i[0] + ' (no ' + icudat + ')');
+				} else {
+					try {
+						fs.symlinkSync(datPath, icudat);
+						console.log(' √ ' + i[0] + ' : ' + icudat + " (symlink)");
+					} catch(e) {
+						fs.linkSync(datPath, icudat);
+						console.log(' √ ' + i[0] + ' : ' + icudat + " (link)");
+					}
+				}
+			});
+			if(!fs.existsSync(icudat)) {
+				throw Error('Somehow failed to install ' + icudat);
+			} else {
+				advice();
+			}
+		});
+		//npm.registry.log.on("log", console.log);
+	});
+}
