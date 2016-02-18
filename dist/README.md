@@ -2,6 +2,9 @@ WHAT IS THIS
 ===
 [ICU4C](https://ssl.icu-project.org) data, now available via NPM.
 
+Actually, instead of using this module directly, see [full-icu](https://www.npmjs.com/package/full-icu) instead,
+and also [#3460](https://github.com/nodejs/node/issues/3460)
+
 WHY DO I NEED THIS
 ===
 See [node Intl wiki](https://github.com/nodejs/node/wiki/Intl) for more details
