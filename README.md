@@ -1,23 +1,36 @@
-License
-WIP.
+ICU4C Data Packager for Node
+###
 
-To use
+Usage
+---
 
-npm run  gen -- --endian=e --major 55 --minor 4
 
-this updates dist/package.json
+
+To use, first get the data file, such as `icudt58l.dat` from an ICU build or from the official ICU source tarball (.tgz/.zip)
+
+Then, publish the little-endian file
+
+    npm run gen -- icudt58l.dat
+
+This will output a line labelled "run this command". (starting with `rm …`) Run that command after each `npm run gen`.
+
+    # convert to Big-Endian
+    icupkg  -tb icudt58l.dat icudt58b.dat
+    npm run gen -- icudt58b.dat
+    # (remember to run the commands instructed)
+
+    # convert to EBCDIC
+    icupkg  -te icudt58l.dat icudt58e.dat
+    npm run gen -- icudt58e.dat
+    # Remember to run the commands instructed.
+
 
 MIRROR
-===
+---
 This is a mirror of source  currently  in
 http://source.icu-project.org/repos/icu/tools/branches/srl/npm11617/release/c/icu4c-data-npm
 
 COPYRIGHT
-===
+---
 
-This software is part of ICU, and as such is:
-
-Copyright (C) 2015 IBM Corporation and Others. All Rights Reserved.
-
-A copy of the ICU license is in (dist/license.html)[dist/license.html]
-or is available at https://ssl.icu-project.org/repos/icu/icu/trunk/license.html
+This software is part of ICU, and as such is under the same terms. See [LICENSE](LICENSE).

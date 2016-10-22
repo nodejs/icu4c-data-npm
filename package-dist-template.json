@@ -9,9 +9,9 @@
         "icu4c"
     ],
     "author": {
-        "name": "The ICU Team; \u00a9 1997-2015 IBM Corporation and Others, All Rights Reserved"
+        "name": "Unicode’s ICU-TC"
     },
-    "license": "MIT\/X",
+    "license": "SEE LICENSE IN LICENSE",
     "bugs": {
         "url": "https://ssl.icu-project.org/trac"
     }

@@ -27,6 +27,7 @@ if(argv._.length === 0) {
 			argv.minor = argv.minor || ("ebl".indexOf(icuend));
 			console.dir(argv);
 			utils.writePkg(argv);
+			console.log('Run this command::')
 			console.log('rm -f dist/*.dat && cp ' + fn + ' dist/ && ( cd dist && npm publish --tag ' + icumaj+icuend + ')');
 		}
 	}
