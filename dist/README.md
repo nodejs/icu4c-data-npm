@@ -7,7 +7,7 @@ and also [#3460](https://github.com/nodejs/node/issues/3460)
 
 WHY DO I NEED THIS
 ===
-See [node Intl wiki](https://github.com/nodejs/node/wiki/Intl) for more details
+See [node Intl docs](https://nodejs.org/api/intl.html) for more details
 
 WHAT VERSION DO I NEED
 ===
