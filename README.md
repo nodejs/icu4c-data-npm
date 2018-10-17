@@ -1,6 +1,11 @@
 ICU4C Data Packager for Node
 ###
 
+Background
+---
+
+https://unicode-org.atlassian.net/browse/ICU-11617
+
 Usage
 ---
 
@@ -24,5 +29,4 @@ Now publish the big endian file.
 
 COPYRIGHT
 ---
-
 This software is part of ICU, and as such is under the same terms. See [LICENSE](LICENSE).
