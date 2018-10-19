@@ -18,7 +18,8 @@ if [[ -f icudt${MAJOR}b.dat ]] && [[ -f icudt${MAJOR}l.dat ]];
 then
     echo "icudt${MAJOR}b.dat / icudt${MAJOR}l.dat already exist."
 else
-    ICUURL=https://ssl.icu-project.org/files/icu4c/${1}/icu4c-$(echo $1 | tr . _)-src.tgz
+    #ICUURL=https://ssl.icu-project.org/files/icu4c/${1}/icu4c-$(echo $1 | tr . _)-src.tgz
+    ICUURL=https://github.com/unicode-org/icu/releases/download/release-$(echo $1 | tr . -)/icu4c-$(echo $1 | tr . _)-src.tgz
     ICUTGZ=$(basename $ICUURL)
 
     if [[ ! -f tmp/${ICUTGZ} ]];
@@ -68,12 +69,12 @@ else
     (cd tmp/${MAJOR} ; tar --strip-components=4 -x -v -p -z -f ../${ICUTGZ} icu/source/data/in/icudt${MAJOR}l.dat && ln -f -v icudt${MAJOR}l.dat ../..  ) || exit 1 
 
     # now make big endian
-    tmp/icupkg -tb ./icudt${MAJOR}l.dat ./icudt${MAJOR}b.dat
+    tmp/icupkg -tb ./icudt${MAJOR}l.dat ./icudt${MAJOR}b.dat || exit 1
     ls -lh ./icudt${MAJOR}[lb].dat
 
 fi
 
 
 
-echo "Now  run npm run gen -- icudt${MAJOR}l.dat (and its output)"
+echo "Now  run npm run gen -- icudt${MAJOR}b.dat (and its output)"
 echo "Then run npm run gen -- icudt${MAJOR}l.dat (and its output)"
