@@ -1,6 +1,10 @@
 ICU4C Data Packager for Node
 ###
 
+# Obsolescence
+
+See https://github.com/unicode-org/full-icu-npm/issues/36 — no updates are planned for ICU 65 and following, for little endian intel.
+
 Background
 ---
 
