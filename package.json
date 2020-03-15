@@ -12,7 +12,7 @@
   "license": "MIT",
   "main": "index.js",
   "dependencies": {
-    "minimist": "^1.1.1",
+    "minimist": "^1.2.2",
     "npm": "^2.7.4"
   },
   "private": true
