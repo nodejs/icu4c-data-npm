@@ -18,7 +18,7 @@ To use, first get the data file, such as `icudt58l.dat` from an ICU build or fro
 
 You may be able to use the following script to do so if `bash` is available:
 
-    bash fetch-data.sh 58
+    bash fetchdata.sh 58.2
 
 Then, publish the little-endian file
 
