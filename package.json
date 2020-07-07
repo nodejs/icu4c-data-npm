@@ -13,7 +13,7 @@
   "main": "index.js",
   "dependencies": {
     "minimist": "^1.1.1",
-    "npm": "^2.7.4"
+    "npm": "^6.14.6"
   },
   "private": true
 }
