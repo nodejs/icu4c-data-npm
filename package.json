@@ -8,8 +8,8 @@
   "keywords": [
     "icu4c"
   ],
-  "author": "The ICU Team; © 1997-2015 IBM Corporation and Others, All Rights Reserved",
-  "license": "MIT",
+  "author": "Steven R. Loomis <srl295@gmail.com>",
+  "license": "Unicode-DFS-2016",
   "main": "index.js",
   "dependencies": {
     "minimist": "^1.2.3",
